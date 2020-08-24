@@ -49,6 +49,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/descriptionEt" />
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add a Note ♥"
+            android:textColor="#ff0000"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/subjectEt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.003"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.64" />
+
         <RadioGroup
             android:id="@+id/RG"
             android:layout_width="wrap_content"
@@ -94,7 +108,35 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.95"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/RG"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/datePickerBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            android:layout_marginEnd="64dp"
+            android:layout_marginRight="64dp"
+            android:text="Choose Date"
+            app:layout_constraintBottom_toTopOf="@+id/addNote"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/RG"
+            app:layout_constraintVertical_bias="0.012" />
+
+        <Button
+            android:id="@+id/timePickerBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            android:text="Choose Time"
+            app:layout_constraintBottom_toTopOf="@+id/addNote"
+            app:layout_constraintEnd_toStartOf="@+id/datePickerBtn"
+            app:layout_constraintHorizontal_bias="0.646"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/RG"
+            app:layout_constraintVertical_bias="0.012" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

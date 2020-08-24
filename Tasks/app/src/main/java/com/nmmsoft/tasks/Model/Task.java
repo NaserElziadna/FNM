@@ -1,6 +1,14 @@
 package com.nmmsoft.tasks.Model;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import com.nmmsoft.tasks.Priority;
+
+import java.sql.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Task {
     private int id;
@@ -9,16 +17,24 @@ public class Task {
     private String description;
     private int image;
     private Priority priority;
+    private String noteCreated;
+
+    private String deadTime;
 
     public Task() {
+        this.noteCreated = saveDateCreatedNote();
     }
 
-    public Task(int id, String subject, String description, int image, Priority priority) {
+    public Task(int id, String subject, String description, int image, Priority priority, String deadTime) {
         this.id = id;
         this.subject = subject;
         this.description = description;
         this.image = image;
         this.priority = priority;
+
+        this.noteCreated = saveDateCreatedNote();
+
+        this.deadTime = deadTime;
     }
 
     public int getId() {
@@ -59,5 +75,26 @@ public class Task {
 
     public void setPriority(Priority priority) {
         this.priority = priority;
+    }
+
+    public String getNoteCreated() {
+        return noteCreated;
+    }
+
+    public void setNoteCreated(String noteCreated) {
+        this.noteCreated = noteCreated;
+    }
+
+    public String saveDateCreatedNote() {
+        java.util.Date date = (java.util.Date) java.util.Calendar.getInstance().getTime();
+        return date.toString();
+    }
+
+    public String getDeadTime() {
+        return deadTime;
+    }
+
+    public void setDeadTime(String deadTime) {
+        this.deadTime = deadTime;
     }
 }

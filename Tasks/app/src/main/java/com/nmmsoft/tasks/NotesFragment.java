@@ -1,5 +1,7 @@
 package com.nmmsoft.tasks;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.renderscript.RenderScript;
 import android.view.LayoutInflater;
@@ -15,9 +17,15 @@ import androidx.fragment.app.Fragment;
 import com.nmmsoft.tasks.Model.Task;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class NotesFragment extends Fragment {
     ListView listView;
+    String[] value = new String[]{
+            "Edit",
+            "Show",
+            "Share"
+    };
 
     public NotesFragment() {
         // Required empty public constructor
@@ -34,9 +42,9 @@ public class NotesFragment extends Fragment {
         //create data
         ArrayList<Task> arrayList = new ArrayList<>();
 
-        arrayList.add(new Task(0,"work","turn off computer",R.drawable.ic_done_all,Priority.EASY_PRIORITY));
-        arrayList.add(new Task(1,"nothing","turn off no no no no",R.drawable.ic_done_all, Priority.HARD_PRIORITY));
-        arrayList.add(new Task(2,"todo","turn off 132 ♥",R.drawable.ic_done_all,Priority.MEDIUM_PRIORITY));
+        arrayList.add(new Task(0, "work", "turn off computer", R.drawable.ic_done_all, Priority.EASY_PRIORITY, ""));
+        arrayList.add(new Task(1, "nothing", "turn off no no no no", R.drawable.ic_done_all, Priority.HARD_PRIORITY, ""));
+        arrayList.add(new Task(2, "todo", "turn off 132 ♥", R.drawable.ic_done_all, Priority.MEDIUM_PRIORITY, ""));
 
         //custom adapter
         final TaskAdapter taskAdapter = new TaskAdapter(getActivity(), R.layout.list_row, arrayList);
@@ -46,8 +54,40 @@ public class NotesFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Task task =taskAdapter.getItem(position);
-                Toast.makeText(getActivity(), ""+task.getId(), Toast.LENGTH_SHORT).show();
+                Task task = taskAdapter.getItem(position);
+
+                Toast.makeText(getActivity(), "" + task.getId(), Toast.LENGTH_SHORT).show();
+
+                //build a dialog
+                final AlertDialog.Builder alertdialogbuilder = new AlertDialog.Builder(getActivity());
+
+                alertdialogbuilder.setTitle("Select A action ");
+
+                alertdialogbuilder.setItems(value, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String selectedText = Arrays.asList(value).get(which);
+
+                        switch (selectedText) {
+                            case "Edit":
+                                Toast.makeText(getActivity(), "Edit", Toast.LENGTH_SHORT).show();
+                                break;
+                            case "Show":
+                                Toast.makeText(getActivity(), "Show", Toast.LENGTH_SHORT).show();
+                                break;
+                            case "Share":
+                                Toast.makeText(getActivity(), "Share", Toast.LENGTH_SHORT).show();
+                                break;
+                            default:
+                                Toast.makeText(getActivity(), "nothing choosed", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
+
+                AlertDialog dialog = alertdialogbuilder.create();
+                dialog.setCancelable(false);
+                dialog.show();
             }
         });
         return view;
