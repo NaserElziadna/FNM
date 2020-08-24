@@ -42,9 +42,9 @@ public class NotesFragment extends Fragment {
         //create data
         ArrayList<Task> arrayList = new ArrayList<>();
 
-        arrayList.add(new Task(0, "work", "turn off computer", R.drawable.ic_done_all, Priority.EASY_PRIORITY, ""));
-        arrayList.add(new Task(1, "nothing", "turn off no no no no", R.drawable.ic_done_all, Priority.HARD_PRIORITY, ""));
-        arrayList.add(new Task(2, "todo", "turn off 132 ♥", R.drawable.ic_done_all, Priority.MEDIUM_PRIORITY, ""));
+        arrayList.add(new Task(0, "work", "turn off computer", ImagesPriority.EASY.getAction(), Priority.EASY_PRIORITY, ""));
+        arrayList.add(new Task(1, "nothing", "turn off no no no no", ImagesPriority.HARD.getAction(), Priority.HARD_PRIORITY, ""));
+        arrayList.add(new Task(2, "todo", "turn off 132 ♥", ImagesPriority.MEDIUM.getAction(), Priority.MEDIUM_PRIORITY, ""));
 
         //custom adapter
         final TaskAdapter taskAdapter = new TaskAdapter(getActivity(), R.layout.list_row, arrayList);
@@ -70,9 +70,11 @@ public class NotesFragment extends Fragment {
 
                         switch (selectedText) {
                             case "Edit":
+                                setFragmentIntoContent(new EditNoteFragment());
                                 Toast.makeText(getActivity(), "Edit", Toast.LENGTH_SHORT).show();
                                 break;
                             case "Show":
+                                setFragmentIntoContent(new ShowNoteFragment());
                                 Toast.makeText(getActivity(), "Show", Toast.LENGTH_SHORT).show();
                                 break;
                             case "Share":
@@ -81,7 +83,13 @@ public class NotesFragment extends Fragment {
                             default:
                                 Toast.makeText(getActivity(), "nothing choosed", Toast.LENGTH_SHORT).show();
                         }
+                    }
+                });
 
+                alertdialogbuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
                     }
                 });
 
@@ -91,6 +99,10 @@ public class NotesFragment extends Fragment {
             }
         });
         return view;
+    }
+
+    private void setFragmentIntoContent(Fragment fragment){
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment, "").commit();
     }
 
 }

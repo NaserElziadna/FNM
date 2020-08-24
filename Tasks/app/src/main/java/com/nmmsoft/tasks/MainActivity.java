@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
                     switch (item.getItemId()) {
                         case R.id.nav_notes:
                             actionBar.setTitle("Notes");

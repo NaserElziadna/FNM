@@ -4,6 +4,7 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import com.nmmsoft.tasks.ImagesPriority;
 import com.nmmsoft.tasks.Priority;
 
 import java.sql.Date;
@@ -21,7 +22,7 @@ public class Task {
 
     private String deadTime;
 
-    public Task() {
+    public Task(int id, String work, String turn_off_computer, ImagesPriority easy, Priority easyPriority, String deadTime) {
         this.noteCreated = saveDateCreatedNote();
     }
 
@@ -35,6 +36,10 @@ public class Task {
         this.noteCreated = saveDateCreatedNote();
 
         this.deadTime = deadTime;
+    }
+
+    public Task() {
+
     }
 
     public int getId() {
