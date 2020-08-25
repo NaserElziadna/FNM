@@ -1,18 +1,18 @@
-package com.nmmsoft.tasks;
+package com.nmmsoft.tasks.Fragment;
 
 import android.os.Bundle;
 
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class EditNoteFragment extends DialogFragment {
+import com.nmmsoft.tasks.R;
 
+public class DoneFragment extends Fragment {
 
-    public EditNoteFragment() {
+    public DoneFragment() {
         // Required empty public constructor
     }
 
@@ -20,6 +20,6 @@ public class EditNoteFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_edit_note, container, false);
+        return inflater.inflate(R.layout.fragment_done, container, false);
     }
 }

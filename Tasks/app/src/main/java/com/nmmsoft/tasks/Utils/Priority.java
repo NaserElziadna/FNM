@@ -1,4 +1,4 @@
-package com.nmmsoft.tasks;
+package com.nmmsoft.tasks.Utils;
 
 public enum Priority {
     EASY_PRIORITY,

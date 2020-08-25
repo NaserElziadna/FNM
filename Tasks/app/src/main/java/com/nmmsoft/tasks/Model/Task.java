@@ -1,15 +1,7 @@
 package com.nmmsoft.tasks.Model;
 
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
-
-import com.nmmsoft.tasks.ImagesPriority;
-import com.nmmsoft.tasks.Priority;
-
-import java.sql.Date;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import com.nmmsoft.tasks.Utils.ImagesPriority;
+import com.nmmsoft.tasks.Utils.Priority;
 
 public class Task {
     private int id;

@@ -1,6 +1,7 @@
-package com.nmmsoft.tasks;
+package com.nmmsoft.tasks.Utils;
 
 import com.nmmsoft.tasks.Model.Task;
+import com.nmmsoft.tasks.R;
 
 import android.content.Context;
 import android.graphics.Color;

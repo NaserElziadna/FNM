@@ -1,4 +1,6 @@
-package com.nmmsoft.tasks;
+package com.nmmsoft.tasks.Utils;
+
+import com.nmmsoft.tasks.R;
 
 public enum ImagesPriority {
     EASY(R.drawable.ic_done_all),

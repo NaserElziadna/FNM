@@ -1,9 +1,9 @@
-package com.nmmsoft.tasks;
+package com.nmmsoft.tasks.Fragment;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
-import android.renderscript.RenderScript;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +14,13 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.nmmsoft.tasks.Activity.DashBoardActivity;
+import com.nmmsoft.tasks.Activity.MainActivity;
+import com.nmmsoft.tasks.Utils.ImagesPriority;
 import com.nmmsoft.tasks.Model.Task;
+import com.nmmsoft.tasks.Utils.Priority;
+import com.nmmsoft.tasks.R;
+import com.nmmsoft.tasks.Utils.TaskAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -70,15 +76,15 @@ public class NotesFragment extends Fragment {
 
                         switch (selectedText) {
                             case "Edit":
-                                setFragmentIntoContent(new EditNoteFragment());
+                                openDashBoardActivity("Edit");
                                 Toast.makeText(getActivity(), "Edit", Toast.LENGTH_SHORT).show();
                                 break;
                             case "Show":
-                                setFragmentIntoContent(new ShowNoteFragment());
+                                openDashBoardActivity("Show");
                                 Toast.makeText(getActivity(), "Show", Toast.LENGTH_SHORT).show();
                                 break;
                             case "Share":
-                                Toast.makeText(getActivity(), "Share", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getActivity(), "Share \ncoming soon", Toast.LENGTH_SHORT).show();
                                 break;
                             default:
                                 Toast.makeText(getActivity(), "nothing choosed", Toast.LENGTH_SHORT).show();
@@ -101,8 +107,15 @@ public class NotesFragment extends Fragment {
         return view;
     }
 
-    private void setFragmentIntoContent(Fragment fragment){
+    private void setFragmentIntoContent(Fragment fragment) {
         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment, "").commit();
+    }
+
+    private void openDashBoardActivity(String fragName) {
+        Intent intent = new Intent(getActivity(), DashBoardActivity.class);
+        intent.putExtra("fragName", fragName);
+        startActivity(intent);
+        getActivity().overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up );
     }
 
 }

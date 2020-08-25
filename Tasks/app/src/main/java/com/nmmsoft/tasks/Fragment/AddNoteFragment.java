@@ -1,4 +1,4 @@
-package com.nmmsoft.tasks;
+package com.nmmsoft.tasks.Fragment;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
@@ -14,6 +14,8 @@ import android.widget.*;
 import android.view.ViewGroup;
 
 import com.nmmsoft.tasks.Model.Task;
+import com.nmmsoft.tasks.Utils.Priority;
+import com.nmmsoft.tasks.R;
 
 import java.util.Calendar;
 

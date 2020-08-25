@@ -1,4 +1,4 @@
-package com.nmmsoft.tasks;
+package com.nmmsoft.tasks.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -10,10 +10,15 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.nmmsoft.tasks.Fragment.AddNoteFragment;
+import com.nmmsoft.tasks.Fragment.DoneFragment;
+import com.nmmsoft.tasks.Fragment.NotesFragment;
+import com.nmmsoft.tasks.R;
 
 public class MainActivity extends AppCompatActivity {
 
     ActionBar actionBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction ft1 = getSupportFragmentManager().beginTransaction();
         ft1.replace(R.id.content, fragment1, "");
         ft1.commit();
+    }
+
+    protected MainActivity getInstanceMainActivity() {
+        return this;
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener selectedListener =
@@ -58,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             };
 
-    private void setFragmentIntoContent(Fragment fragment){
+    private void setFragmentIntoContent(Fragment fragment) {
         getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment, "").commit();
     }
 
