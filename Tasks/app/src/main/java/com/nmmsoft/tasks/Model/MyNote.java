@@ -3,8 +3,8 @@ package com.nmmsoft.tasks.Model;
 import com.nmmsoft.tasks.Utils.ImagesPriority;
 import com.nmmsoft.tasks.Utils.Priority;
 
-public class Task {
-    private int id;
+public class MyNote {
+    private String id;
 
     private String subject;
     private String description;
@@ -14,11 +14,11 @@ public class Task {
 
     private String deadTime;
 
-    public Task(int id, String work, String turn_off_computer, ImagesPriority easy, Priority easyPriority, String deadTime) {
+    public MyNote(String id, String work, String turn_off_computer, ImagesPriority easy, Priority easyPriority, String deadTime) {
         this.noteCreated = saveDateCreatedNote();
     }
 
-    public Task(int id, String subject, String description, int image, Priority priority, String deadTime) {
+    public MyNote(String id, String subject, String description, int image, Priority priority, String deadTime) {
         this.id = id;
         this.subject = subject;
         this.description = description;
@@ -30,15 +30,15 @@ public class Task {
         this.deadTime = deadTime;
     }
 
-    public Task() {
+    public MyNote() {
 
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

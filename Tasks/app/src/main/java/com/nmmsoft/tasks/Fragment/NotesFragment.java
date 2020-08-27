@@ -11,15 +11,13 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-
 import androidx.fragment.app.Fragment;
 
 import com.nmmsoft.tasks.Activity.DashBoardActivity;
-import com.nmmsoft.tasks.Activity.MainActivity;
-import com.nmmsoft.tasks.Utils.ImagesPriority;
-import com.nmmsoft.tasks.Model.Task;
-import com.nmmsoft.tasks.Utils.Priority;
+import com.nmmsoft.tasks.Model.MyNote;
 import com.nmmsoft.tasks.R;
+import com.nmmsoft.tasks.Utils.ImagesPriority;
+import com.nmmsoft.tasks.Utils.Priority;
 import com.nmmsoft.tasks.Utils.TaskAdapter;
 
 import java.util.ArrayList;
@@ -46,11 +44,11 @@ public class NotesFragment extends Fragment {
         listView = view.findViewById(R.id.listView);
 
         //create data
-        ArrayList<Task> arrayList = new ArrayList<>();
+        ArrayList<MyNote> arrayList = new ArrayList<>();
 
-        arrayList.add(new Task(0, "work", "turn off computer", ImagesPriority.EASY.getAction(), Priority.EASY_PRIORITY, ""));
-        arrayList.add(new Task(1, "nothing", "turn off no no no no", ImagesPriority.HARD.getAction(), Priority.HARD_PRIORITY, ""));
-        arrayList.add(new Task(2, "todo", "turn off 132 ♥", ImagesPriority.MEDIUM.getAction(), Priority.MEDIUM_PRIORITY, ""));
+        arrayList.add(new MyNote("0", "work", "turn off computer", ImagesPriority.EASY.getAction(), Priority.EASY_PRIORITY, ""));
+        arrayList.add(new MyNote("1", "nothing", "turn off no no no no", ImagesPriority.HARD.getAction(), Priority.HARD_PRIORITY, ""));
+        arrayList.add(new MyNote("2", "todo", "turn off 132 ♥", ImagesPriority.MEDIUM.getAction(), Priority.MEDIUM_PRIORITY, ""));
 
         //custom adapter
         final TaskAdapter taskAdapter = new TaskAdapter(getActivity(), R.layout.list_row, arrayList);
@@ -60,9 +58,9 @@ public class NotesFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Task task = taskAdapter.getItem(position);
+                MyNote myNote = taskAdapter.getItem(position);
 
-                Toast.makeText(getActivity(), "" + task.getId(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "" + myNote.getId(), Toast.LENGTH_SHORT).show();
 
                 //build a dialog
                 final AlertDialog.Builder alertdialogbuilder = new AlertDialog.Builder(getActivity());

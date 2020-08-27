@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1048433252085",
+    "firebase_url": "https://familynotemanger.firebaseio.com",
+    "project_id": "familynotemanger",
+    "storage_bucket": "familynotemanger.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1048433252085:android:5cc5a1c54d985b702ed7bc",
+        "android_client_info": {
+          "package_name": "com.nmmsoft.tasks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1048433252085-va5f3pkjhaidnsh4tg4ph5tamju5gcse.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nmmsoft.tasks",
+            "certificate_hash": "a61b6a9fb7c19f9a80c951d6c68a0907a543fd06"
+          }
+        },
+        {
+          "client_id": "1048433252085-av7afkgv4ao3bmb2s2u6kdfk78glft4d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGXqOLUzS2kQPi1osu9Ykf_odqIfNZzEg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1048433252085-av7afkgv4ao3bmb2s2u6kdfk78glft4d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

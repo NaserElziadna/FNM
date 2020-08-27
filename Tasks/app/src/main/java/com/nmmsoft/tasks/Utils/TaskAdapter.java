@@ -1,8 +1,5 @@
 package com.nmmsoft.tasks.Utils;
 
-import com.nmmsoft.tasks.Model.Task;
-import com.nmmsoft.tasks.R;
-
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -14,14 +11,17 @@ import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.nmmsoft.tasks.Model.MyNote;
+import com.nmmsoft.tasks.R;
+
 import java.util.ArrayList;
 
-public class TaskAdapter extends ArrayAdapter<Task> {
+public class TaskAdapter extends ArrayAdapter<MyNote> {
     private Context mContext;
     private int mResource;
-    private Task mtask;
+    private MyNote mtask;
 
-    public TaskAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Task> objects) {
+    public TaskAdapter(@NonNull Context context, int resource, @NonNull ArrayList<MyNote> objects) {
         super(context, resource, objects);
         this.mContext = context;
         this.mResource = resource;
@@ -29,7 +29,7 @@ public class TaskAdapter extends ArrayAdapter<Task> {
 
     @Nullable
     @Override
-    public Task getItem(int position) {
+    public MyNote getItem(int position) {
         return super.getItem(position);
     }
 
