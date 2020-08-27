@@ -18,10 +18,6 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.nmmsoft.tasks.Model.MyNote;
 import com.nmmsoft.tasks.R;
 import com.nmmsoft.tasks.Utils.Priority;
@@ -30,12 +26,6 @@ import java.util.Calendar;
 
 
 public class AddNoteFragment extends Fragment {
-    //firebase
-    FirebaseAuth firebaseAuth;
-    FirebaseUser user;
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
-
     Button mAddBtn;
     EditText mSubjectEt;
     EditText mDescriptionEt;
@@ -55,12 +45,6 @@ public class AddNoteFragment extends Fragment {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_add_note, container, false);
 
-        //init firebase
-        firebaseAuth = FirebaseAuth.getInstance();
-        user = firebaseAuth.getCurrentUser();
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("Notes");
-
         mAddBtn = view.findViewById(R.id.addNote);
         mSubjectEt = view.findViewById(R.id.subjectEt);
         mDescriptionEt = view.findViewById(R.id.descriptionEt);
@@ -76,7 +60,7 @@ public class AddNoteFragment extends Fragment {
             @SuppressLint("ResourceType")
             @Override
             public void onClick(View v) {
-                task.setId(databaseReference.child("Notes").push().getKey());
+                task.setId(1);
                 if (!TextUtils.isEmpty(mSubjectEt.getText().toString())) {
                     task.setSubject(mSubjectEt.getText().toString());
                     if (!TextUtils.isEmpty(mDescriptionEt.getText().toString())) {
@@ -102,11 +86,6 @@ public class AddNoteFragment extends Fragment {
                     }
                 } else {
                     Toast.makeText(getActivity(), "null subject", Toast.LENGTH_SHORT).show();
-                }
-                // TODO: 8/24/2020
-                //save task to database
-                if (task != null) {
-                    saveNoteToFirebaseRealtimeDatabase(task);
                 }
             }
         });
@@ -157,20 +136,4 @@ public class AddNoteFragment extends Fragment {
 
         return view;
     }
-
-    // TODO: 8/26/2020 continue the saving user note data section 
-    private void saveNoteToFirebaseRealtimeDatabase(MyNote note) {
-        String uid = firebaseAuth.getInstance().getCurrentUser().getUid();
-//        FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
-//        DocumentReference uidRef = rootRef.collection("Notes").document(uid);
-//        uidRef.set(note);
-
-        //firebase database instance
-        FirebaseDatabase database =FirebaseDatabase.getInstance();
-        //path to store user database named "Users"
-        DatabaseReference reference = database.getReference("Notes");
-        //put data within hashmap in database
-        reference.child(uid).setValue(note);
-    }
-
 }

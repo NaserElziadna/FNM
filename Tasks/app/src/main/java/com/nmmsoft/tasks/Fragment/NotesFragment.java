@@ -46,10 +46,9 @@ public class NotesFragment extends Fragment {
         //create data
         ArrayList<MyNote> arrayList = new ArrayList<>();
 
-        arrayList.add(new MyNote("0", "work", "turn off computer", ImagesPriority.EASY.getAction(), Priority.EASY_PRIORITY, ""));
-        arrayList.add(new MyNote("1", "nothing", "turn off no no no no", ImagesPriority.HARD.getAction(), Priority.HARD_PRIORITY, ""));
-        arrayList.add(new MyNote("2", "todo", "turn off 132 ♥", ImagesPriority.MEDIUM.getAction(), Priority.MEDIUM_PRIORITY, ""));
-
+        arrayList.add(new MyNote(1, "work", "turn off computer", ImagesPriority.EASY.getAction(), Priority.EASY_PRIORITY, ""));
+        arrayList.add(new MyNote(2, "nothing", "turn off no no no no", ImagesPriority.HARD.getAction(), Priority.HARD_PRIORITY, ""));
+        arrayList.add(new MyNote(3, "todo", "turn off 132 ♥", ImagesPriority.MEDIUM.getAction(), Priority.MEDIUM_PRIORITY, ""));
         //custom adapter
         final TaskAdapter taskAdapter = new TaskAdapter(getActivity(), R.layout.list_row, arrayList);
 

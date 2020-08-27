@@ -1,19 +1,12 @@
 package com.nmmsoft.tasks.Fragment;
 
-import android.app.Dialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.RelativeLayout;
+
+import androidx.fragment.app.DialogFragment;
 
 import com.nmmsoft.tasks.R;
 
@@ -53,7 +46,7 @@ public class ShowNoteFragment extends DialogFragment implements View.OnClickList
             case R.id.fullscreen_dialog_close:
                 dismiss();
                 getActivity().finish();
-                getActivity().overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+                getActivity().overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 break;
 
         }

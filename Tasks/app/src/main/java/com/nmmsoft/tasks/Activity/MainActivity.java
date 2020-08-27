@@ -1,9 +1,9 @@
 package com.nmmsoft.tasks.Activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -12,8 +12,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.nmmsoft.tasks.Fragment.AddNoteFragment;
 import com.nmmsoft.tasks.Fragment.DoneFragment;
 import com.nmmsoft.tasks.Fragment.NotesFragment;
@@ -22,7 +20,6 @@ import com.nmmsoft.tasks.R;
 public class MainActivity extends AppCompatActivity {
 
     ActionBar actionBar;
-    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +29,6 @@ public class MainActivity extends AppCompatActivity {
         //action bar and its title
         actionBar = getSupportActionBar();
         actionBar.setTitle("Notes");
-
-        firebaseAuth = FirebaseAuth.getInstance();
 
         //bottom navigation
         BottomNavigationView navigationView = findViewById(R.id.navigation);
@@ -74,23 +69,23 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.content, fragment, "").commit();
     }
 
-    private void checkUserStatus() {
-        //get current user
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        if (user != null) {
-            //user is signed in stay here
-//            mProfileTv.setText(user.getEmail());
-        } else {
-            //user not signed in , go to main activity
-            startActivity(new Intent(MainActivity.this, LoginActivity.class));
-            finish();
-        }
-    }
+//    private void checkUserStatus() {
+//        //get current user
+//        FirebaseUser user = firebaseAuth.getCurrentUser();
+//        if (user != null) {
+//            //user is signed in stay here
+////            mProfileTv.setText(user.getEmail());
+//        } else {
+//            //user not signed in , go to main activity
+//            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+//            finish();
+//        }
+//    }
 
     @Override
     protected void onStart() {
         //check on start of app
-        checkUserStatus();
+//        checkUserStatus();
         super.onStart();
     }
 
@@ -109,8 +104,8 @@ public class MainActivity extends AppCompatActivity {
         //get item id
         int id = item.getItemId();
         if (id == R.id.action_logout) {
-            firebaseAuth.signOut();
-            checkUserStatus();
+            Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
+//            checkUserStatus();
         }
         return super.onOptionsItemSelected(item);
     }

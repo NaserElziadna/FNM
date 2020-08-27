@@ -4,7 +4,7 @@ import com.nmmsoft.tasks.Utils.ImagesPriority;
 import com.nmmsoft.tasks.Utils.Priority;
 
 public class MyNote {
-    private String id;
+    private int id;
 
     private String subject;
     private String description;
@@ -18,7 +18,7 @@ public class MyNote {
         this.noteCreated = saveDateCreatedNote();
     }
 
-    public MyNote(String id, String subject, String description, int image, Priority priority, String deadTime) {
+    public MyNote(int id, String subject, String description, int image, Priority priority, String deadTime) {
         this.id = id;
         this.subject = subject;
         this.description = description;
@@ -34,11 +34,11 @@ public class MyNote {
 
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

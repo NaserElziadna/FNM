@@ -8,23 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.nmmsoft.tasks.R;
-
-import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -32,7 +20,6 @@ public class RegisterActivity extends AppCompatActivity {
     Button mRegisterBtn;
     TextView mHaveAccount;
     ProgressDialog progressDialog;
-    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +38,6 @@ public class RegisterActivity extends AppCompatActivity {
         mPasswordEt = (EditText) findViewById(R.id.passwordEt);
         mRegisterBtn = (Button) findViewById(R.id.registerBtn);
         mHaveAccount = (TextView) findViewById(R.id.haveAccountTv);
-
-        // Initialize Firebase Auth instance
-        mAuth = FirebaseAuth.getInstance();
 
         //init progressDialog
         progressDialog = new ProgressDialog(this);
@@ -76,7 +60,7 @@ public class RegisterActivity extends AppCompatActivity {
                     mPasswordEt.setError("Password length at least 6 characters");
                     mPasswordEt.setFocusable(true);
                 } else {
-                    regitrationUser(email, password);
+//                    regitrationUser(email, password);
                 }
             }
         });
@@ -90,57 +74,6 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
-
-    private void regitrationUser(String email, String password) {
-        //email and password pattern is valid , and
-        //show progress dialog and start registration user
-        progressDialog.show();
-
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, dismiss dialog and start register activity
-                            progressDialog.dismiss();
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            //get user email and uid from auth
-                            String email = user.getEmail();
-                            String uid = user.getUid();
-                            //when user is registered store user info in firebase realtime database too
-                            //using hashmap
-                            HashMap<Object, String> hashMap = new HashMap<>();
-                            //put info in hashmap
-                            hashMap.put("email", email);
-                            hashMap.put("uid", uid);
-                            hashMap.put("name", "");
-                            //firebase database instance
-                            FirebaseDatabase database = FirebaseDatabase.getInstance();
-                            //path to store user database named "Users"
-                            DatabaseReference reference = database.getReference("Users");
-                            //put data within hashmap in database
-                            reference.child(uid).setValue(hashMap);
-
-                            Toast.makeText(RegisterActivity.this, "Regstration ....\n" + user.getEmail(), Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(RegisterActivity.this, MainActivity.class));
-                            finish();
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            progressDialog.dismiss();
-                            Toast.makeText(RegisterActivity.this, "Authentication failed", Toast.LENGTH_SHORT).show();
-                        }
-
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                //error , dismiss progress dialog and get and show the error message
-                progressDialog.dismiss();
-                Toast.makeText(RegisterActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();//go previous button
